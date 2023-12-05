@@ -14,7 +14,7 @@ insert into Endereco values ('27903-182', 'Rua Doutor Manuel D Elboux', 91, 2);
 insert into Endereco values ('91903-152', 'Rua Doutor Manuel D Elboux', 91, 2);
 insert into Endereco values ('87431-192', 'Rua Jannart Moutinho Ribeiro', 62, 2);
 
-insert into Calendario(data_calendario) values ('24-12-2004 15:30:00'); <--! YYYY-MM-DD HH:MI:SS. -->
+insert into Calendario(data_calendario) values ('24-12-2004 15:30:00');
 insert into Calendario(data_calendario) values ('12-09-2023 19:30:00');
 insert into Calendario(data_calendario) values ('10-10-2024 09:30:00');
 insert into Calendario(data_calendario) values ('25-11-2025 12:30:00');
@@ -30,27 +30,27 @@ insert into Pessoas values (22476488890, 'José dos Santos Pinto', '05138-120');
 insert into Pessoas values (25977741879, 'Bruno Almeida do Ramos', '91903-152');
 insert into Pessoas values (87703715370, 'Yuri Rufino de Nunes', '91903-152');
 
-insert into Pessoas_telefone(44298763223, 56970323690);
-insert into Pessoas_telefone(78632132451, 11966432569);
-insert into Pessoas_telefone(98535657635, 11955418761);
-insert into Pessoas_telefone(98535657635, 11988101847);
-insert into Pessoas_telefone(22476488890, 21933279064);
-insert into Pessoas_telefone(25977741879, 36988772254);
-insert into Pessoas_telefone(25977741879, 36967900054);
-insert into Pessoas_telefone(87703715370, 1191040-1846);
+insert into Pessoas_telefone values (44298763223, 56970323690);
+insert into Pessoas_telefone values (78632132451, 11966432569);
+insert into Pessoas_telefone values (98535657635, 11955418761);
+insert into Pessoas_telefone values (98535657635, 11988101847);
+insert into Pessoas_telefone values (22476488890, 21933279064);
+insert into Pessoas_telefone values (25977741879, 36988772254);
+insert into Pessoas_telefone values (25977741879, 36967900054);
+insert into Pessoas_telefone values (87703715370, 11910401846);
 
-insert into Pessoas_email(44298763223, 'augustinhoferreira32@outlook.com');
-insert into Pessoas_email(44298763223, 'ferreiraaugustinho34@outlook.com');
-insert into Pessoas_email(78632132451, 'matheuszin542@gmail.com');
-insert into Pessoas_email(78632132451, 'barros.erica45@gmail.com');
-insert into Pessoas_email(22476488890, 'josesantospinto5597@gmail.com');
-insert into Pessoas_email(25977741879, 'bruninhoramos34@outlook.com');
-insert into Pessoas_email(87703715370, 'yuriGutsLover@hotmail.com');
+insert into Pessoas_email values (44298763223, 'augustinhoferreira32@outlook.com');
+insert into Pessoas_email values (44298763223, 'ferreiraaugustinho34@outlook.com');
+insert into Pessoas_email values (78632132451, 'matheuszin542@gmail.com');
+insert into Pessoas_email values (78632132451, 'barros.erica45@gmail.com');
+insert into Pessoas_email values (22476488890, 'josesantospinto5597@gmail.com');
+insert into Pessoas_email values (25977741879, 'bruninhoramos34@outlook.com');
+insert into Pessoas_email values (87703715370, 'yuriGutsLover@hotmail.com');
 
-insert into Evento ('24-12-2004 15:30:00', 3);
-insert into Evento ('12-09-2023 19:30:00', 3);
-insert into Evento ('10-10-2024 09:30:00', 2);
-insert into Evento ('25-11-2025 12:30:00', 1);
+insert into Evento values ('24-12-2004 15:30:00', 3);
+insert into Evento values ('12-09-2023 19:30:00', 3);
+insert into Evento values ('10-10-2024 09:30:00', 2);
+insert into Evento values ('25-11-2025 12:30:00', 1);
 
 insert into Juiz values (22476488890, 'Rua Tiradentes 154');
 
@@ -71,35 +71,79 @@ insert into Torcedor values (98535657635);
 
 insert into Dono_comercio values(25977741879, 'Rua Guaipá 678');
 
-insert into Patrocinador values(44298763223);
+insert into Patrocinador values (44298763223);
 
 insert into Empresa values (39752873000590, '05138-120', 'Bar da Peixada', 'IMG_2023.jpg', 25977741879, 44298763223);
 
+insert into Empresa_telefone values (39752873000590, 11974316789);
+insert into Empresa_telefone values (39752873000590, 22987437980);
+
+insert into Amistoso (codevento) values (1);
+insert into Amistoso (codevento) values (2);
+insert into Liga (codevento) values (3);
+insert into Copa (codevento) values (3);
+
+insert into Associacao (nome, camisa1, camisa2, bandeira) values ('RalaPoeira', 'azul-claro', 'amarelo-escuro', 'hgitjtir.jpg');
+insert into Associacao (nome, camisa1, camisa2, bandeira) values ('ColinaSuperior', 'vermelho', 'preto', 'ttdgttff.jpg');
+insert into Associacao (nome, camisa1, camisa2, bandeira) values ('SalGrosso', 'vermelho', 'amarelo', 'IMG_20231224_Download.jpg');
+
+insert into Campos (fk_endereco, fk_associacao, fk_amistoso) values ('72903-132', 1, 1);
+insert into Campos (fk_endereco, fk_associacao, fk_amistoso) values ('72903-132', 2, 2);
+insert into Campos (fk_endereco, fk_associacao, fk_amistoso) values ('72903-132', 2, 2);
+insert into Campos (fk_endereco, fk_associacao, fk_liga) values ('87431-192', 3, 1);
+insert into Campos (fk_endereco, fk_associacao, fk_copa) values ('87431-192', 3, 1);
+
+insert into Time (nome, brasao, fk_associacao, fk_patrocinador, fk_amistoso) values ('100Sal', 'vfdvrefe.jpg', 1 ,44298763223, 1 );
+insert into Time (nome, brasao, fk_associacao, fk_amistoso) values ('Liberal de Pelotas', 'hdjdbejd.jpg', 1, 1);
+insert into Time (nome, brasao, fk_associacao, fk_liga) values ('Resenha de Cristal', 'IMG_20231104.jpg', 2, 1);
+insert into Time (nome, brasao, fk_associacao, fk_liga) values ('Scorpion', 'IMG_20231205.jpg', 2, 1);
+insert into Time (nome, brasao, fk_associacao, fk_copa) values ('PaySandu', 'PaySandu_logo.jpg', 3, 1);
+insert into Time (nome, brasao, fk_associacao, fk_copa) values ('Facela F.C.', 'design_facela.jpg', 3, 1);
+insert into Time (nome, brasao, fk_associacao, fk_copa) values ('M19', 'M19.jpg', 3, 1);
+insert into Time (nome, brasao, fk_associacao, fk_copa) values ('Sete de Julho', 'sete_logo.jpg', 3, 1);
+
+insert into Letra_divisao (letra) values ('A');
+insert into Letra_divisao (letra) values ('B');
+insert into Letra_divisao (letra) values ('C');
+
+insert into Time_divisoes values (1, 1);
+insert into Time_divisoes values (2, 1);
+insert into Time_divisoes values (3, 2);
+insert into Time_divisoes values (4, 2);
+insert into Time_divisoes values (5, 3);
+insert into Time_divisoes values (6, 3);
+
+insert into Jogador_time values (1, 87703715370);
+
+insert into Jogos(fk_associacao, fk_calendario, fk_evento) values (1, 1, 1);
+insert into Jogos(fk_associacao, fk_calendario, fk_evento) values (1, 2, 2);
+insert into Jogos(fk_associacao, fk_calendario, fk_evento) values (2, 3, 3);
+
+insert into Jogos_time values(1, 1);
+insert into Jogos_time values(1, 2);
+insert into Jogos_time values(2, 3);
+insert into Jogos_time values(2, 4);
+insert into Jogos_time values(3, 5);
+insert into Jogos_time values(3, 6);
+
+insert into Dirigentes_ligas values(78632132451, 1);
+insert into Dirigentes_ligas values(22476488890, 1);
+
+insert into Dirigentes_copas values(22476488890, 1);
+insert into Dirigentes_copas values(78632132451, 1);
+
+insert into Pessoas_torcedoras values (98535657635, 1);
+insert into Pessoas_torcedoras values (98535657635, 2);
+insert into Pessoas_torcedoras values (25977741879, 1);
+insert into Pessoas_torcedoras values (87703715370, 4);
 
 
 
-/*
-Avenida Edgar Facó, 100
-1197431-6789
-2298743-7980
-Avenida Raimundo Pereira de Magalhães, 3386
-Avenida Mutinga, 951
-Rua Doutor Joy Arruda 246
-Rua Doutor Manuel D'Elboux 91
-Associação RalaPoeira, hgitjtir.jpg, azul-claro, amarelo-escuro
-Associação ColinaSuperior, ttdgttff.jpg, vermelho, preto
-Associação SalGrosso, jgytef.jpg, branca, preta
-Time 100Sal, vfdvrefe.jpg
 
-Jogo- A e B, 24/10/2024 15:00
-Jogo B e C 25/10 1700
-Jogo D e E 29/11 10:00
-Jogo E e A 22/01/2024 09:00
-Liberal de Pelotas, hdjdbejd.jpg
-Resenha de Cristal, IMG_20231104.jpg
-Scorpion, IMG_20231205.jpg
-PaySandu, PaySandu_logo.jpg
-Facela F.C., design_facela.jpg
-M19, M19.jpg
-Sete de Julho, sete_logo.jpg
-*/
+
+
+
+
+
+
+
