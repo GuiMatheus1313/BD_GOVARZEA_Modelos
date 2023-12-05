@@ -1,25 +1,30 @@
 create database GoVarzea_bd;
 
+<!-- drop database GoVarzea_bd; -->
+
 use GoVarzea_bd;
 
 create table Estado(
-	sigla char primary key,
+	sigla char(2) primary key,
 	nome varchar(20) not null,
 );
+
 
 create table Cidade(
 	codigo int identity primary key,
 	nome varchar(20) not null,
-	fk_estado char not null
-	Foreign key(fk_estado) references Estado(sigla)
+	fk_estado char(2) not null,
+	constraint fk_estado Foreign key(fk_estado) references Estado(sigla)
 );
+
+
 
 create table Endereco(
 	CEP varchar(10) primary key,
 	logradouro varchar(40) not null,
-	numero int not null,
+	numero int(5) not null,
 	fk_cidade int not null,
-	Foreign key(fk_cidade) references Cidade(codigo)
+	constraint fk_cidade Foreign key(fk_cidade) references Cidade(codigo)
 );
 
 create table Calendario(
@@ -34,14 +39,14 @@ create table Prioridade_evento(
 
 create table Pessoas(
 	CPF bigint primary key,
-	nome varchar not null,
+	nome varchar(50) not null,
 	fk_endereco varchar(10) not null,
 	constraint fk_endereco foreign key(fk_endereco) references Endereco(CEP)
 );
 
 create table Pessoas_telefone(
 	fk_cpf bigint,
-	telefone bigint,
+	telefone bigint(11),
 	constraint fkpk_cpf_telefone primary key(fk_cpf, telefone),
 	constraint fk_cpf foreign key(fk_cpf) references Pessoas(CPF)
 );
@@ -119,18 +124,24 @@ create table Empresa_telefone(
 
 
 create table Amistoso(
-	codamistoso int identity primary key,
-	constraint fk_codamistoso foreign key(codamistoso) references Evento(codigo)
+	codevento int 
+	codamistoso int identity,
+	constraint pk_codevento_codamistoso primary key(codevento, codamistoso)
+	constraint fk_codevento foreign key(codevento) references Evento(codigo)
 );
 
 create table Liga(
-	codliga int identity primary key,
-	constraint fk_codliga foreign key(codliga) references Evento(codigo)
+	codevento int,
+	codliga int identity,
+	constraint pk_codevento_codliga primary key(codevento, codliga),
+	constraint fk_codevento2 foreign key(codevento) references Evento(codigo)
 );
 
 create table Copa(
-	codcopa int identity primary key,
-	constraint fk_codcopa foreign key(codcopa) references Evento(codigo)
+	codevento int,
+	codcopa int identity,
+	constraint pk_codevento_codcopa primary key(codevento, codcopa),
+	constraint fk_codevento3 foreign key(codevento) references Evento(codigo)
 );
 
 create table Associacao(
