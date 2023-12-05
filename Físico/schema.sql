@@ -1,7 +1,5 @@
 create database GoVarzea_bd;
 
-<!-- drop database GoVarzea_bd; -->
-
 use GoVarzea_bd;
 
 create table Estado(
@@ -22,7 +20,7 @@ create table Cidade(
 create table Endereco(
 	CEP varchar(10) primary key,
 	logradouro varchar(40) not null,
-	numero int(5) not null,
+	numero int not null,
 	fk_cidade int not null,
 	constraint fk_cidade Foreign key(fk_cidade) references Cidade(codigo)
 );
@@ -46,7 +44,7 @@ create table Pessoas(
 
 create table Pessoas_telefone(
 	fk_cpf bigint,
-	telefone bigint(11),
+	telefone bigint,
 	constraint fkpk_cpf_telefone primary key(fk_cpf, telefone),
 	constraint fk_cpf foreign key(fk_cpf) references Pessoas(CPF)
 );
@@ -124,31 +122,28 @@ create table Empresa_telefone(
 
 
 create table Amistoso(
-	codevento int 
-	codamistoso int identity,
-	constraint pk_codevento_codamistoso primary key(codevento, codamistoso)
+	codevento int unique, 
+	codamistoso int identity primary key,
 	constraint fk_codevento foreign key(codevento) references Evento(codigo)
 );
 
 create table Liga(
-	codevento int,
-	codliga int identity,
-	constraint pk_codevento_codliga primary key(codevento, codliga),
+	codevento int unique,
+	codliga int identity primary key,
 	constraint fk_codevento2 foreign key(codevento) references Evento(codigo)
 );
 
 create table Copa(
-	codevento int,
-	codcopa int identity,
-	constraint pk_codevento_codcopa primary key(codevento, codcopa),
+	codevento int unique,
+	codcopa int identity primary key,
 	constraint fk_codevento3 foreign key(codevento) references Evento(codigo)
 );
 
 create table Associacao(
 	codigo int identity primary key,
 	nome varchar(20) not null,
-	camisa1 varchar(10) not null,
-	camisa2 varchar(10) null,
+	camisa1 varchar(20) not null,
+	camisa2 varchar(20) null,
 	bandeira varchar(200) null
 );
 
@@ -245,3 +240,5 @@ create table Pessoas_torcedoras(
 	constraint fk_pessoa foreign key(fk_pessoa) references Pessoas(CPF),
 	constraint fk_time3 foreign key(fk_time) references Time(codigo)
 );
+
+
